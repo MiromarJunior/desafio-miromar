@@ -21,18 +21,21 @@ public class App2 {
             float[] valores = {100f,50f,20f,10f,5f,2f};
 
         int moedas[] = new int[6];   
-            float valorEntradaMoeda = (valorDeEntrada - (int) valorDeEntrada);
-            float valorArredondado = Math.round(valorDeEntrada * (float) Math.pow(10, 2)) / (float) Math.pow(10, 2);
-            float parteDecimal = valorArredondado - (int) valorArredondado;
+            
+        double valorEntradaMoeda = ((valorDeEntrada - ((int) valorDeEntrada)) * 100);
+        int resultado = (int) Math.round(valorEntradaMoeda);
 
-            System.out.println(parteDecimal);
+        System.out.println(resultado);
+         
             moedas[0]  =  (int) ( (valorDeEntrada - (notas[5] * 2) -(notas[4] * 5) -(notas[3] * 10) - (notas[2] * 20) - (notas[1]  * 50)- (notas[0] * 100)));
-            moedas[1]  = (int) ( (valorEntradaMoeda - (moedas[0] * 100)) / 50);
-            moedas[2]   = (int) ( (valorEntradaMoeda - (moedas[1] * 50)- (moedas[0] * 100)) / 25);
-            moedas[3]   = (int) ( (valorEntradaMoeda - (moedas[2] * 20) - (moedas[1]  * 50)- (moedas[0] * 100)) / 10);
-            moedas[4]   = (int) ( (valorEntradaMoeda - (moedas[3] * 10) - (moedas[2] * 20) - (moedas[1]  * 50)- (moedas[0] * 100))  / 5);
-            moedas[5]  = (int) ( (valorEntradaMoeda - (moedas[4] * 5) -(moedas[3] * 10) - (moedas[2] * 20) - (moedas[1]  * 50)- (moedas[0] * 100)));
-            float[] valoresMoedas = {1f,0.50f,0.25f,0.10f,0.5f,0.1f};
+            
+             moedas[1]  =  (int) ( valorEntradaMoeda / 50);
+             moedas[2]   = (int) ( (valorEntradaMoeda - (moedas[1] * 50)) / 25);
+             moedas[3]   = (int) ( (valorEntradaMoeda - (moedas[2] * 25) - (moedas[1]  * 50)) / 10);
+             moedas[4]   = (int) ( (valorEntradaMoeda - (moedas[3] * 10) - (moedas[2] * 25) - (moedas[1]  * 50))  / 5);
+             moedas[5]  = (int) ( (valorEntradaMoeda - (moedas[4] * 5) -(moedas[3] * 10) - (moedas[2] * 25) - (moedas[1]  * 50)));
+     
+             float[] valoresMoedas = {1f,0.50f,0.25f,0.10f,0.05f,0.01f};
            
       
 
@@ -43,7 +46,7 @@ public class App2 {
 
          System.out.println("MOEDAS : ");     
     for (int i = 0; i < moedas.length; i++) {
-        System.out.printf("%d nota(s) de R$ %.2f%n", moedas[i], valoresMoedas[i]);
+        System.out.printf("%d moedas(s) de R$ %.2f%n", moedas[i], valoresMoedas[i]);
     }
         
     }
