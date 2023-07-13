@@ -22,8 +22,8 @@ public class App2 {
 
         int moedas[] = new int[6];   
             
-        double valorEntradaMoeda = ((valorDeEntrada - ((int) valorDeEntrada)) * 100);
-        int resultado = (int) Math.round(valorEntradaMoeda);
+        double resultado = ((valorDeEntrada - ((int) valorDeEntrada)) * 100);
+        int valorEntradaMoeda = (int) Math.round(resultado);
 
         System.out.println(resultado);
          
