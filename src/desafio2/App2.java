@@ -1,3 +1,15 @@
+/**
+ * Desafio 2
+ *  Esta classe representa o aplicativo que lê um valor baseado em dinheiro 
+ * ele mostra a quantidade mínima de notas e moedas para chegar no valor informado
+ * Inclui o  Locale.setDefault(Locale.US); para forçar a saída com (.) conforme solicitado.
+ * 
+ * @autor Miromar Francisco de Alcantara Junior
+ * 
+ * 
+ */
+
+
 package desafio2;
 
 import java.util.Locale;
@@ -8,34 +20,32 @@ public class App2 {
         Scanner scan = new Scanner(System.in);
         Locale.setDefault(Locale.US);
         System.out.println("Informe o valor");
-        float valorDeEntrada = scan.nextFloat();
-        scan.close();
+        float entrada = scan.nextFloat();
+        calculaQtdNotasMoedas(entrada);
+        scan.close();       
 
-        int notas[] = new int[6];
+    }
+
+    public static void calculaQtdNotasMoedas(float valorDeEntrada){
+         int notas[] = new int[6];
         notas[0] = (int) (valorDeEntrada / 100);
         notas[1] = (int) ((valorDeEntrada - (notas[0] * 100)) / 50);
         notas[2] = (int) ((valorDeEntrada - (notas[1] * 50) - (notas[0] * 100)) / 20);
         notas[3] = (int) ((valorDeEntrada - (notas[2] * 20) - (notas[1] * 50) - (notas[0] * 100)) / 10);
-        notas[4] = (int) ((valorDeEntrada - (notas[3] * 10) - (notas[2] * 20) - (notas[1] * 50) - (notas[0] * 100))
-                / 5);
+        notas[4] = (int) ((valorDeEntrada - (notas[3] * 10) - (notas[2] * 20) - (notas[1] * 50) - (notas[0] * 100)) / 5);
         notas[5] = (int) ((valorDeEntrada - (notas[4] * 5) - (notas[3] * 10) - (notas[2] * 20) - (notas[1] * 50) - (notas[0] * 100)) / 2);
         float[] valores = { 100f, 50f, 20f, 10f, 5f, 2f };
 
         int moedas[] = new int[6];
-
         double resultado = ((valorDeEntrada - ((int) valorDeEntrada)) * 100);
         int valorEntradaMoeda = (int) Math.round(resultado);
 
-        moedas[0] = (int) ((valorDeEntrada - (notas[5] * 2) - (notas[4] * 5) - (notas[3] * 10) - (notas[2] * 20)
-                - (notas[1] * 50) - (notas[0] * 100)));
-
+        moedas[0] = (int) ((valorDeEntrada - (notas[5] * 2) - (notas[4] * 5) - (notas[3] * 10) - (notas[2] * 20) - (notas[1] * 50) - (notas[0] * 100)));
         moedas[1] = (int) (valorEntradaMoeda / 50);
         moedas[2] = (int) ((valorEntradaMoeda - (moedas[1] * 50)) / 25);
         moedas[3] = (int) ((valorEntradaMoeda - (moedas[2] * 25) - (moedas[1] * 50)) / 10);
         moedas[4] = (int) ((valorEntradaMoeda - (moedas[3] * 10) - (moedas[2] * 25) - (moedas[1] * 50)) / 5);
-        moedas[5] = (int) ((valorEntradaMoeda - (moedas[4] * 5) - (moedas[3] * 10) - (moedas[2] * 25)
-                - (moedas[1] * 50)));
-
+        moedas[5] = (int) ((valorEntradaMoeda - (moedas[4] * 5) - (moedas[3] * 10) - (moedas[2] * 25) - (moedas[1] * 50)));
         float[] valoresMoedas = { 1f, 0.50f, 0.25f, 0.10f, 0.05f, 0.01f };
 
         System.out.println("NOTAS : ");
